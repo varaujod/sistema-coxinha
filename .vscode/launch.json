@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-Application<sistema-coxinha>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.coxinha.Application",
+            "projectName": "sistema-coxinha",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
