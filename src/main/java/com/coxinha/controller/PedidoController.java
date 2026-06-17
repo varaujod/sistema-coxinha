@@ -2,7 +2,6 @@ package com.coxinha.controller;
 
 import com.coxinha.model.Pedido;
 import com.coxinha.service.PedidoService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.Map;
@@ -11,8 +10,11 @@ import java.util.Map;
 @RequestMapping("/api/pedidos")
 public class PedidoController {
 
-    @Autowired
-    private PedidoService pedidoService;
+    private final PedidoService pedidoService;
+
+    PedidoController(PedidoService pedidoService) {
+        this.pedidoService = pedidoService;
+    }
 
     @PostMapping
     public ResponseEntity<?> realizarPedido(@RequestBody Map<String, Object> payload) {

@@ -3,15 +3,17 @@ package com.coxinha.patterns.observer;
 import com.coxinha.model.MovimentacaoFinanceira;
 import com.coxinha.model.Pedido;
 import com.coxinha.repository.MovimentacaoFinanceiraRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 
 @Component
 public class FinanceObserver implements OrderObserver {
 
-    @Autowired
-    private MovimentacaoFinanceiraRepository movimentacaoFinanceiraRepository;
+    private final MovimentacaoFinanceiraRepository movimentacaoFinanceiraRepository;
+
+    FinanceObserver(MovimentacaoFinanceiraRepository movimentacaoFinanceiraRepository) {
+        this.movimentacaoFinanceiraRepository = movimentacaoFinanceiraRepository;
+    }
 
     @Override
     public void onOrderPlaced(Pedido pedido) {

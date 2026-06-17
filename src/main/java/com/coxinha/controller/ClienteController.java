@@ -4,7 +4,6 @@ import com.coxinha.model.Cliente;
 import com.coxinha.model.MovimentacaoFinanceira;
 import com.coxinha.repository.ClienteRepository;
 import com.coxinha.repository.MovimentacaoFinanceiraRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
@@ -15,11 +14,13 @@ import java.util.Map;
 @RequestMapping("/api/clientes")
 public class ClienteController {
 
-    @Autowired
-    private ClienteRepository clienteRepository;
+    private final ClienteRepository clienteRepository;
+    private final MovimentacaoFinanceiraRepository movimentacaoFinanceiraRepository;
 
-    @Autowired
-    private MovimentacaoFinanceiraRepository movimentacaoFinanceiraRepository;
+    ClienteController(ClienteRepository clienteRepository, MovimentacaoFinanceiraRepository movimentacaoFinanceiraRepository) {
+        this.clienteRepository = clienteRepository;
+        this.movimentacaoFinanceiraRepository = movimentacaoFinanceiraRepository;
+    }
 
     @GetMapping
     public List<Cliente> listarClientes() {

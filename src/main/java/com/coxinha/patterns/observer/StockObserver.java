@@ -3,15 +3,17 @@ package com.coxinha.patterns.observer;
 import com.coxinha.model.MovimentacaoEstoque;
 import com.coxinha.model.Pedido;
 import com.coxinha.repository.MovimentacaoEstoqueRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 
 @Component
 public class StockObserver implements OrderObserver {
 
-    @Autowired
-    private MovimentacaoEstoqueRepository movimentacaoEstoqueRepository;
+    private final MovimentacaoEstoqueRepository movimentacaoEstoqueRepository;
+
+    StockObserver(MovimentacaoEstoqueRepository movimentacaoEstoqueRepository) {
+        this.movimentacaoEstoqueRepository = movimentacaoEstoqueRepository;
+    }
 
     @Override
     public void onOrderPlaced(Pedido pedido) {

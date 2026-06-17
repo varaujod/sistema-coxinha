@@ -1,6 +1,5 @@
 package com.coxinha;
 
-import com.coxinha.model.Cliente;
 import com.coxinha.model.Salgado;
 import com.coxinha.patterns.factory.SalgadoFactory;
 import com.coxinha.repository.ClienteRepository;
@@ -22,10 +21,10 @@ public class Application {
         return args -> {
             // Semear Salgados (usando o Factory Method)
             if (salgadoRepository.count() == 0) {
-                Salgado frango = SalgadoFactory.createSalgado("FRANGO", 12);
-                Salgado carne = SalgadoFactory.createSalgado("CARNE", 8);
-                Salgado queijo = SalgadoFactory.createSalgado("QUEIJO", 15);
-                Salgado catupiry = SalgadoFactory.createSalgado("CATUPIRY", 10);
+                Salgado frango = SalgadoFactory.createSalgado("FRANGO", 1000);
+                Salgado carne = SalgadoFactory.createSalgado("CARNE", 1000);
+                Salgado queijo = SalgadoFactory.createSalgado("QUEIJO", 1000);
+                Salgado catupiry = SalgadoFactory.createSalgado("CATUPIRY", 1000);
 
                 salgadoRepository.save(frango);
                 salgadoRepository.save(carne);

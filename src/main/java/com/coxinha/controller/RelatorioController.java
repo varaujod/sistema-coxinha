@@ -8,7 +8,6 @@ import com.coxinha.repository.MovimentacaoEstoqueRepository;
 import com.coxinha.repository.MovimentacaoFinanceiraRepository;
 import com.coxinha.repository.PedidoRepository;
 import com.coxinha.repository.SalgadoRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -16,17 +15,20 @@ import java.util.List;
 @RequestMapping("/api/relatorios")
 public class RelatorioController {
 
-    @Autowired
-    private PedidoRepository pedidoRepository;
+    private final PedidoRepository pedidoRepository;
 
-    @Autowired
-    private SalgadoRepository salgadoRepository;
+    private final SalgadoRepository salgadoRepository;
 
-    @Autowired
-    private MovimentacaoEstoqueRepository movimentacaoEstoqueRepository;
+    private final MovimentacaoEstoqueRepository movimentacaoEstoqueRepository;
 
-    @Autowired
-    private MovimentacaoFinanceiraRepository movimentacaoFinanceiraRepository;
+    private final MovimentacaoFinanceiraRepository movimentacaoFinanceiraRepository;
+
+    RelatorioController(PedidoRepository pedidoRepository, SalgadoRepository salgadoRepository, MovimentacaoEstoqueRepository movimentacaoEstoqueRepository, MovimentacaoFinanceiraRepository movimentacaoFinanceiraRepository) {
+        this.pedidoRepository = pedidoRepository;
+        this.salgadoRepository = salgadoRepository;
+        this.movimentacaoEstoqueRepository = movimentacaoEstoqueRepository;
+        this.movimentacaoFinanceiraRepository = movimentacaoFinanceiraRepository;
+    }
 
     @GetMapping("/pedidos/{clienteId}")
     public List<Pedido> obterHistoricoCliente(@PathVariable Long clienteId) {
