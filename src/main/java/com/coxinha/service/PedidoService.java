@@ -12,27 +12,29 @@ import com.coxinha.patterns.strategy.RegularPricing;
 import com.coxinha.repository.ClienteRepository;
 import com.coxinha.repository.PedidoRepository;
 import com.coxinha.repository.SalgadoRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class PedidoService {
 
-    @Autowired
-    private ClienteRepository clienteRepository;
+    private final ClienteRepository clienteRepository;
 
-    @Autowired
-    private SalgadoRepository salgadoRepository;
+    private final SalgadoRepository salgadoRepository;
 
-    @Autowired
-    private PedidoRepository pedidoRepository;
+    private final PedidoRepository pedidoRepository;
 
-    @Autowired
-    private OrderSubject orderSubject;
+    private final OrderSubject orderSubject;
 
-    @Autowired
-    private CommandInvoker commandInvoker;
+    private final CommandInvoker commandInvoker;
+
+    PedidoService(ClienteRepository clienteRepository, SalgadoRepository salgadoRepository, PedidoRepository pedidoRepository, OrderSubject orderSubject, CommandInvoker commandInvoker) {
+        this.clienteRepository = clienteRepository;
+        this.salgadoRepository = salgadoRepository;
+        this.pedidoRepository = pedidoRepository;
+        this.orderSubject = orderSubject;
+        this.commandInvoker = commandInvoker;
+    }
 
     @Transactional
     public Pedido criarPedido(Long clienteId, String sabor, Integer quantidade, String strategyName) {
