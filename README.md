@@ -49,8 +49,6 @@ A aplicação adota o padrão arquitetural **MVC (Model-View-Controller)**:
 * **`controller`**: Camada de exposição da API REST, manipulando payloads JSON via anotações do Spring (ex: `@PostMapping`, `@GetMapping`).
 * **`view` (Front-End)**: Interface rica construída com HTML5, CSS3 (*Glassmorphism effects*) e Vanilla JavaScript assíncrono (Fetch API) localizada na pasta `src/main/resources/static`.
 
----
-
 ## 📋 Principais Endpoints da API REST
 
 | Categoria | Método | Endpoint | Descrição |
@@ -64,15 +62,3 @@ A aplicação adota o padrão arquitetural **MVC (Model-View-Controller)**:
 | **Auditoria** | `GET` | `/api/relatorios/movimentacoes-financeiras` | Histórico assíncrono gerado pelo `FinanceObserver`. |
 | **Auditoria** | `GET` | `/api/relatorios/movimentacoes-estoque` | Histórico assíncrono gerado pelo `StockObserver`. |
 
----
-
-## 🚀 Como Executar o Projeto Localmente
-
-### Pré-requisitos
-* **Java Development Kit (JDK) 17** ou superior instalado.
-* **Apache Maven** configurado no PATH do sistema.
-
-### Passo a Passo
-1. Clone o repositório para a sua máquina local:
-   ```bash
-   git clone [https://github.com/seu-usuario/seu-repositorio.git](https://github.com/seu-usuario/seu-repositorio.git)
